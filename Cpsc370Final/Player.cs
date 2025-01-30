@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 public class Player
 {
     public String userName;
-    public Pokemon playersPokemon;
+    public Pokemon playersPokemon = new Pokemon();
     public bool isPlayerOne = false;
 
     public void getUsername()
