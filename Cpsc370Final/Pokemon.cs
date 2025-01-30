@@ -19,6 +19,7 @@ public class Pokemon
         pokeName = FileReader.filePokeName;
         pokeType = FileReader.filePokeType;
         pokeMove = FileReader.filePokeMove;
+        printPokemonInfo();
     }
 
     public void checkIfFainted()
@@ -27,5 +28,10 @@ public class Pokemon
         {
             isFainted = true;
         }
+    }
+
+    public void printPokemonInfo()
+    {
+        Console.WriteLine("Pokemon: " + pokeName + "Type: " + pokeType + "Move: " + pokeMove);
     }
 }

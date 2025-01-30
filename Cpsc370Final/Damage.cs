@@ -1,22 +1,22 @@
 namespace Cpsc370Final;
 
-public class Damage
+public static class Damage
 {
-    public readonly Random random = new Random();
+    public static readonly Random random = new Random();
 
-    public int Attack(string attackerType, string defenderType)
+    public static int Attack(string attackerType, string defenderType)
     {
         double critMultiplier = random.Next(100) < 15 ? 1.5 : 1.0;
         double typeMultiplier = GetTypeMultiplier(attackerType, defenderType);
         return (int)(random.Next(10,26) * critMultiplier * typeMultiplier);
     }
 
-    public bool Dodging()
+    public static bool Dodging()
     {
         return random.Next(100) < 15;
     }
 
-    private double GetTypeMultiplier(string attackerType, string defenderType)
+    private static double GetTypeMultiplier(string attackerType, string defenderType)
     {
         if ((attackerType == "fire" && (defenderType == "grass" || defenderType == "ice" || defenderType == "bug" ||
                                         defenderType == "steel")) ||
