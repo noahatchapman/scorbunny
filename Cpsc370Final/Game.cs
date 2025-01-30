@@ -2,8 +2,8 @@ namespace Cpsc370Final;
 
 public class Game
 {
-    public Player firstPlayer;
-    public Player secondPlayer;
+    public Player firstPlayer = new Player();
+    public Player secondPlayer = new Player();
     public bool isContinuing = true;
     public readonly Random random = new Random();
 
@@ -18,10 +18,10 @@ public class Game
         while (isContinuing)
         {
             DecidePlayerOne();
-            GivePokemon(); // to the isPlayerOne = true
+            GivePokemon(firstPlayer); // to the isPlayerOne = true
             GiveRerollOption(firstPlayer); // tell them if they reroll they have to stick wtih it
             ClearConsole();
-            GivePokemon(); // to the !isPlayerOne = false
+            GivePokemon(secondPlayer); // to the !isPlayerOne = false
             GiveRerollOption(secondPlayer); //tell them if they reroll they have to stick wtih it
             ClearConsole();
             StartBattleSimulation();
@@ -44,74 +44,59 @@ public class Game
         }
     }
 
-    private void GivePokemon()
+    private void GivePokemon(Player player)
     {
-        if (firstPlayer.isPlayerOne)
-        {
-            firstPlayer.playersPokemon.createPokemon();
-        }
-        else
-        {
-            secondPlayer.playersPokemon.createPokemon();
-        }
+            Console.WriteLine($"{player.userName} received:");
+            player.playersPokemon.createPokemon();
     }
 
     private void DecidePlayerOne()
     {
         //true = first player
         //false = second player
-        Boolean isFirstPlayerPlayerOne = ((random.Next(100)) > 50);
-        if(isFirstPlayerPlayerOne)
-        {
-            firstPlayer.isPlayerOne = true;
-        }
-        else
-        {
-            secondPlayer.isPlayerOne = true;
-        }
+        bool isFirstPlayerPlayerOne = ((random.Next(100)) > 50);
+        
+        firstPlayer.isPlayerOne = isFirstPlayerPlayerOne;
+        secondPlayer.isPlayerOne = !isFirstPlayerPlayerOne;
+        
+        Console.WriteLine($"{(isFirstPlayerPlayerOne ? firstPlayer.userName : secondPlayer.userName)} goes first!");
     }
 
 
     public void StartBattleSimulation()
     {
         int turnCounter = 1;
+
+        Console.WriteLine("Battle Start!");
+        Console.WriteLine($"{firstPlayer.userName} with {firstPlayer.playersPokemon.pokeName} vs {secondPlayer.userName} with {secondPlayer.playersPokemon.pokeName}!");
+        
         while (!firstPlayer.playersPokemon.isFainted && !secondPlayer.playersPokemon.isFainted)
         {
+            Player attackingPlayer = checkTurn(turnCounter) ? firstPlayer : secondPlayer;
+            Player defendingPlayer = checkTurn(turnCounter) ? secondPlayer : firstPlayer;
             
-            //enter battle stuff
-            Console.WriteLine("Battle Start!");
-            Console.WriteLine(firstPlayer.userName);
-            firstPlayer.playersPokemon.printPokemonInfo();
-            Console.WriteLine("against" + secondPlayer.userName);
-            secondPlayer.playersPokemon.printPokemonInfo();
-            Console.WriteLine("!");
+            Console.WriteLine($"{attackingPlayer.userName}'s turn! {attackingPlayer.playersPokemon.pokeName} attacks!");
+            
+            int damageAmount = Damage.Attack(attackingPlayer.playersPokemon.pokeType, defendingPlayer.playersPokemon.pokeType);
+            defendingPlayer.playersPokemon.drainHP(damageAmount);
+            
+            Console.WriteLine($"{defendingPlayer.playersPokemon.pokeName} took {damageAmount} damage! Remaining HP: {defendingPlayer.playersPokemon.pokeHP}");
+            
+            defendingPlayer.playersPokemon.checkIfFainted();
+            
+            if (defendingPlayer.playersPokemon.isFainted)
+            {
+                Console.WriteLine($"{defendingPlayer.playersPokemon.pokeName} has fainted! {attackingPlayer.userName} wins!");
+                break;
+            }
 
-            if (checkTurn(turnCounter))
-            {
-                int damageAmount;
-                damageAmount = Damage.Attack(firstPlayer.playersPokemon.pokeType, secondPlayer.playersPokemon.pokeType);
-                secondPlayer.playersPokemon.drainHP(damageAmount);
-            }
-            else
-            {
-                int damageAmount;
-                damageAmount = Damage.Attack(secondPlayer.playersPokemon.pokeType, firstPlayer.playersPokemon.pokeType);
-                firstPlayer.playersPokemon.drainHP(damageAmount);
-            }
+            turnCounter++;
         }
     }
 
     private bool checkTurn(int turnCounter)
     {
-        //Odd numbers means isPlayerOne's turn
-        if (turnCounter % 2 == 1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return turnCounter % 2 == 1;
     }
     public void ClearConsole()
     {
