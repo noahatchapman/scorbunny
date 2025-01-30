@@ -4,9 +4,8 @@ using System.Text.RegularExpressions;
 public class Player
 {
     public String userName;
-    //public Pokemon playersPokemon;
-    private bool isPlayerOne;
-
+    public Pokemon playersPokemon;
+    public bool isPlayerOne = false;
 
     public void getUsername()
     {
@@ -35,17 +34,4 @@ public class Player
         return true;
     }
     
-    public string GetUserName()
-    {
-        return userName;
     }
-    
-    }
-        // TODO: get user input, can only be letters or numbers, if not keep asking for user input, until they enter a valid name*/
-        // then set the variable userName to the userInput
-    
-
-   // public void getPlayersPokemon()
-    //{
-       // playersPokemon.createPokemon();
-    //}
