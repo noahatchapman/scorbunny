@@ -4,10 +4,10 @@ public class Damage
 {
     public readonly Random random = new Random();
 
-    public int Attack()
+    public int Attack(string attackerType, string defenderType)
     {
         double critMultiplier = random.Next(100) < 15 ? 1.5 : 1.0;
-        double typeMultiplier = GetTypeMultiplier(Type, opponent.Type);
+        double typeMultiplier = GetTypeMultiplier(attackerType, defenderType);
         return (int)(random.Next(10,26) * critMultiplier * typeMultiplier);
     }
 
