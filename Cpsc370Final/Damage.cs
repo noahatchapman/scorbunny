@@ -44,27 +44,27 @@ public static class Damage
 
     private static double GetTypeMultiplier(string attackerType, string defenderType)
     {
-        if ((attackerType == "fire" && (defenderType == "grass" || defenderType == "ice" || defenderType == "bug" ||
-                                        defenderType == "steel")) ||
-            (attackerType == "water" &&
-             (defenderType == "fire" || defenderType == "ground" || defenderType == "rock")) ||
-            (attackerType == "grass" &&
-             (defenderType == "water" || defenderType == "ground" || defenderType == "rock")) ||
-            (attackerType == "electric" && (defenderType == "water" || defenderType == "flying")) ||
-            (attackerType == "ground" && (defenderType == "electric" || defenderType == "fire" ||
-                                          defenderType == "poison" || defenderType == "rock" ||
-                                          defenderType == "steel")) ||
-            (attackerType == "psychic" && (defenderType == "fighting" || defenderType == "poison")) ||
-            (attackerType == "fighting" && (defenderType == "normal" || defenderType == "ice" ||
-                                            defenderType == "rock" || defenderType == "dark" ||
-                                            defenderType == "steel")) ||
-            (attackerType == "ice" && (defenderType == "dragon" || defenderType == "flying" ||
-                                       defenderType == "grass" || defenderType == "ground")) ||
-            (attackerType == "rock" && (defenderType == "fire" || defenderType == "ice" || defenderType == "flying" ||
-                                        defenderType == "bug")) ||
-            (attackerType == "ghost" && (defenderType == "psychic" || defenderType == "ghost")) ||
-            (attackerType == "dark" && (defenderType == "psychic" || defenderType == "ghost")) ||
-            (attackerType == "steel" && (defenderType == "ice" || defenderType == "rock" || defenderType == "fairy")))
+        if ((attackerType == "Fire" && (defenderType == "Grass" || defenderType == "Ice" || defenderType == "Bug" ||
+                                        defenderType == "Steel")) ||
+            (attackerType == "Water" &&
+             (defenderType == "Fire" || defenderType == "Ground" || defenderType == "Rock")) ||
+            (attackerType == "Grass" &&
+             (defenderType == "Water" || defenderType == "Ground" || defenderType == "Rock")) ||
+            (attackerType == "Electric" && (defenderType == "Water" || defenderType == "Flying")) ||
+            (attackerType == "Ground" && (defenderType == "Electric" || defenderType == "Fire" ||
+                                          defenderType == "Poison" || defenderType == "Rock" ||
+                                          defenderType == "Steel")) ||
+            (attackerType == "Psychic" && (defenderType == "Fighting" || defenderType == "Poison")) ||
+            (attackerType == "Fighting" && (defenderType == "Normal" || defenderType == "Ice" ||
+                                            defenderType == "Rock" || defenderType == "Dark" ||
+                                            defenderType == "Steel")) ||
+            (attackerType == "Ice" && (defenderType == "Dragon" || defenderType == "Flying" ||
+                                       defenderType == "Grass" || defenderType == "Ground")) ||
+            (attackerType == "Rock" && (defenderType == "Fire" || defenderType == "Ice" || defenderType == "Flying" ||
+                                        defenderType == "Bug")) ||
+            (attackerType == "Ghost" && (defenderType == "Psychic" || defenderType == "Ghost")) ||
+            (attackerType == "Dark" && (defenderType == "Psychic" || defenderType == "Ghost")) ||
+            (attackerType == "Steel" && (defenderType == "Ice" || defenderType == "Rock" || defenderType == "Fairy")))
         {
             return 1.5;
         }
