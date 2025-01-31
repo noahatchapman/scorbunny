@@ -34,6 +34,6 @@ public class Pokemon
 
     public void printPokemonInfo()
     {
-        Console.WriteLine("Pokemon: " + pokeName + " Type: " + pokeType + " Move: " + pokeMove);
+        Console.WriteLine("Pokemon: " + pokeName + " | Type: " + pokeType + " | Move: " + pokeMove);
     }
 }
