@@ -1,19 +1,45 @@
+using System.Net;
+
 namespace Cpsc370Final;
 
 public static class Damage
 {
     public static readonly Random random = new Random();
+    public static bool isCrit;
+    public static bool isSuperEffective;
+    
 
     public static int Attack(string attackerType, string defenderType)
     {
         double critMultiplier = random.Next(100) < 15 ? 1.5 : 1.0;
+        checKIfCrit(critMultiplier);
         double typeMultiplier = GetTypeMultiplier(attackerType, defenderType);
+        checkIfSuperEffective(typeMultiplier);
         return (int)(random.Next(10,26) * critMultiplier * typeMultiplier);
     }
 
-    public static bool Dodging()
+    private static void checkIfSuperEffective(double typeMultiplier)
     {
-        return random.Next(100) < 15;
+        if (typeMultiplier == 1.5)
+        {
+            isSuperEffective = true;
+        }
+        else
+        {
+            isSuperEffective = false;
+        }
+    }
+
+    public static void checKIfCrit(double crit)
+    {
+        if (crit == 1.5)
+        {
+            isCrit = true;
+        }
+        else
+        {
+            isCrit = false;
+        }
     }
 
     private static double GetTypeMultiplier(string attackerType, string defenderType)
