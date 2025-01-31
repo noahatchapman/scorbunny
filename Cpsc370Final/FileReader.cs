@@ -12,11 +12,11 @@ public static class FileReader
     public static string filePokeMove;
 
     private static string filePath = "PokemonNames.txt";
+    private static List<string[]> data = new List<string[]>();
+    private static Random _random = new Random();
 
-    public static List<string[]> ReadFile()
+    public static void ReadFile()
     {
-        List<string[]> result = new List<string[]>();
-
         try
         {
             string[] lines = File.ReadAllLines(filePath);
@@ -27,26 +27,23 @@ public static class FileReader
                 {
                     splitLine[i] = splitLine[i].Trim();
                 }
-                result.Add(splitLine);
+                data.Add(splitLine);
             }
         }
         catch (Exception e)
         {
             Console.WriteLine("Error reading file: " + e.Message);
         }
-
-        return result;
     }
 
     public static void GetRandomPokemon()
     {
-        List<string[]> data = ReadFile();
+        Console.WriteLine($"DATA COUNT: {data.Count}");
         if (data.Count > 0)
         {
-            Random _random = new Random();
-            int randomIndex = _random.Next(0, 18);
+            int randomIndex = _random.Next(0, 17);
+            Console.WriteLine($"RANDOM INDEX: {randomIndex}");
             SetPokemonInfo(data[randomIndex]);
-            Console.WriteLine($"Random index selected: {randomIndex}");
         }   
     }
 
@@ -57,8 +54,6 @@ public static class FileReader
             filePokeName = pokemonAsArray[0];
             filePokeType = pokemonAsArray[1];
             filePokeMove = pokemonAsArray[2];
-            
-            Console.WriteLine($"Selected Pokémon: {filePokeName}, Type: {filePokeType}, Move: {filePokeMove}");
         }
     }
 }
