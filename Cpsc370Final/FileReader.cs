@@ -38,11 +38,9 @@ public static class FileReader
 
     public static void GetRandomPokemon()
     {
-        Console.WriteLine($"DATA COUNT: {data.Count}");
         if (data.Count > 0)
         {
             int randomIndex = _random.Next(0, 17);
-            Console.WriteLine($"RANDOM INDEX: {randomIndex}");
             SetPokemonInfo(data[randomIndex]);
         }   
     }

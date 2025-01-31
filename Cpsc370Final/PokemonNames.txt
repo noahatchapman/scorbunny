@@ -1,18 +1,18 @@
 Scorbunny, Fire, Ember
-Vaporeon, Water, Watergun
+Vaporeon, Water, Water gun
 Phanpy, Ground, Mud shot
-Shinx, Electric, Thundershock
+Shinx, Electric, Thunder shock
 Swirlix, Fairy, Disarming voice
-Turtwig, Grass, Vinewhip
+Turtwig, Grass, Vine whip
 Shuppet, Ghost, Astonish
 Mewtwo, Psychic, Psybeam
 Absol, Dark, Knock off
 Cubchoo, Ice, Ice beam
-Klinklang, Steel, Irontail
-Caterpie, Bug, Strugglebug
+Klinklang, Steel, Iron tail
+Caterpie, Bug, Struggle bug
 Riolu, Fighting, Lowkick
-Trubbish, Poison, Poisonjab
+Trubbish, Poison, Poison jab
 Regirock, Rock, Rocktomb
-Tornadus, Flying, Aerialace
-Dratini, Dragon, Dragonbreath
+Tornadus, Flying, Aerial ace
+Dratini, Dragon, Dragon breath
 Snorlax, Normal, Slam
