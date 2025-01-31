@@ -64,6 +64,11 @@ public static class Damage
                                         defenderType == "Bug")) ||
             (attackerType == "Ghost" && (defenderType == "Psychic" || defenderType == "Ghost")) ||
             (attackerType == "Dark" && (defenderType == "Psychic" || defenderType == "Ghost")) ||
+            (attackerType == "Fairy" && (defenderType == "Dark" || defenderType == "Fighting" || defenderType == "Dragon")) ||
+            (attackerType == "Flying" && (defenderType == "Grass" || defenderType == "Bug" || defenderType == "Fighting")) ||
+            (attackerType == "Poison" && (defenderType == "Grass" || defenderType == "Fairy")) ||
+            (attackerType == "Bug" && (defenderType == "Dark" || defenderType == "Grass" || defenderType == "Psychic")) ||
+            (attackerType == "Dragon" && (defenderType == "Dragon")) ||
             (attackerType == "Steel" && (defenderType == "Ice" || defenderType == "Rock" || defenderType == "Fairy")))
         {
             return 1.5;

@@ -81,7 +81,7 @@ public class Game
     }
 
 
-    public void StartBattleSimulation()
+    private void StartBattleSimulation()
     {
         int turnCounter = 1;
 
@@ -129,7 +129,7 @@ public class Game
     {
         return turnCounter % 2 == 1;
     }
-    public void ClearConsole()
+    private void ClearConsole()
     {
         Console.Clear();
     }

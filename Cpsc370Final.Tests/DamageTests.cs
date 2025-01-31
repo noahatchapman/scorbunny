@@ -11,8 +11,8 @@ namespace Cpsc370Final.Tests
         public void TestAttack_FireVsGrass()
         {
             // Arrange
-            string attackerType = "fire";
-            string defenderType = "grass";
+            string attackerType = "Fire";
+            string defenderType = "Grass";
 
             // Act
             int damage = Damage.Attack(attackerType, defenderType);
