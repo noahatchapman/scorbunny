@@ -9,6 +9,7 @@ public class Game
 
     public void startGame()
     {
+        FileReader.ReadFile();
         Console.WriteLine("~~Welcome to a 1v1 Pokemon Battle Simulation!~~");
         Console.WriteLine("First Player");
         firstPlayer.getUsername();
@@ -30,6 +31,8 @@ public class Game
             AskToContinue();
 
         }
+        
+        Console.WriteLine("Thank you for playing!");
 
     }
 
@@ -92,7 +95,7 @@ public class Game
             Player attackingPlayer = checkTurn(turnCounter) ? firstPlayer : secondPlayer;
             Player defendingPlayer = checkTurn(turnCounter) ? secondPlayer : firstPlayer;
             
-            Console.WriteLine($"{attackingPlayer.userName}'s turn! {attackingPlayer.playersPokemon.pokeName} attacks!");
+            Console.WriteLine($"{attackingPlayer.userName}'s turn! {attackingPlayer.playersPokemon.pokeName} attacks with {attackingPlayer.playersPokemon.pokeMove}!");
             Thread.Sleep(2000);
             int damageAmount = Damage.Attack(attackingPlayer.playersPokemon.pokeType, defendingPlayer.playersPokemon.pokeType);
             defendingPlayer.playersPokemon.drainHP(damageAmount);
