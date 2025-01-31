@@ -5,7 +5,7 @@ namespace Cpsc370Final.Tests
         [Fact]
         public void TestCreatePokemon()
         {
-            // Arrange: Mocking the FileReader static properties to simulate random Pokémon data
+            // Arrange: 
             FileReader.filePokeName = "Charmander";
             FileReader.filePokeType = "Fire";
             FileReader.filePokeMove = "Ember";
