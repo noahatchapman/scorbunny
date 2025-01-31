@@ -6,7 +6,6 @@ using System.IO;
 
 public static class FileReader
 {
-    private static Random _random = new Random();
     
     public static string filePokeName;
     public static string filePokeType;
@@ -44,9 +43,11 @@ public static class FileReader
         List<string[]> data = ReadFile();
         if (data.Count > 0)
         {
-            int randomIndex = _random.Next(data.Count);
+            Random _random = new Random();
+            int randomIndex = _random.Next(0, 18);
             SetPokemonInfo(data[randomIndex]);
-        }
+            Console.WriteLine($"Random index selected: {randomIndex}");
+        }   
     }
 
     private static void SetPokemonInfo(string[] pokemonAsArray)
@@ -56,6 +57,8 @@ public static class FileReader
             filePokeName = pokemonAsArray[0];
             filePokeType = pokemonAsArray[1];
             filePokeMove = pokemonAsArray[2];
+            
+            Console.WriteLine($"Selected Pokémon: {filePokeName}, Type: {filePokeType}, Move: {filePokeMove}");
         }
     }
 }

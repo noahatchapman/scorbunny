@@ -17,22 +17,37 @@ public class Game
         
         while (isContinuing)
         {
-            DecidePlayerOne();
-            GivePokemon(firstPlayer); // to the isPlayerOne = true
+            GivePokemon(firstPlayer); 
             GiveRerollOption(firstPlayer); // tell them if they reroll they have to stick wtih it
+            Thread.Sleep(2500);
             ClearConsole();
-            GivePokemon(secondPlayer); // to the !isPlayerOne = false
+            GivePokemon(secondPlayer); 
             GiveRerollOption(secondPlayer); //tell them if they reroll they have to stick wtih it
+            Thread.Sleep(2500);
             ClearConsole();
+            DecidePlayerOne();
             StartBattleSimulation();
-            
+            AskToContinue();
+
         }
 
     }
 
+    private void AskToContinue()
+    {
+        Console.WriteLine("Would you like to continue (yes/no): ");
+        String userInput = Console.ReadLine();
+        while (userInput != "yes" && userInput != "no")
+        {
+            Console.WriteLine("Invalid input. Please enter 'yes' or 'no': ");
+            userInput = Console.ReadLine();
+        }
+        isContinuing = userInput == "yes";
+    }
+
     private void GiveRerollOption(Player player)
     {
-        Console.WriteLine("Would you like to reoll? Answer 'yes' or 'no'. You only get one reroll!");
+        Console.WriteLine("Would you like to reroll? Answer 'yes' or 'no'. You only get one reroll!");
         String userAnswer = Console.ReadLine();
         if (userAnswer == "yes" )
         {
@@ -68,7 +83,9 @@ public class Game
         int turnCounter = 1;
 
         Console.WriteLine("Battle Start!");
+        Thread.Sleep(2000);
         Console.WriteLine($"{firstPlayer.userName} with {firstPlayer.playersPokemon.pokeName} vs {secondPlayer.userName} with {secondPlayer.playersPokemon.pokeName}!");
+        Thread.Sleep(2000);
         
         while (!firstPlayer.playersPokemon.isFainted && !secondPlayer.playersPokemon.isFainted)
         {
@@ -76,11 +93,22 @@ public class Game
             Player defendingPlayer = checkTurn(turnCounter) ? secondPlayer : firstPlayer;
             
             Console.WriteLine($"{attackingPlayer.userName}'s turn! {attackingPlayer.playersPokemon.pokeName} attacks!");
-            
+            Thread.Sleep(2000);
             int damageAmount = Damage.Attack(attackingPlayer.playersPokemon.pokeType, defendingPlayer.playersPokemon.pokeType);
             defendingPlayer.playersPokemon.drainHP(damageAmount);
             
             Console.WriteLine($"{defendingPlayer.playersPokemon.pokeName} took {damageAmount} damage! Remaining HP: {defendingPlayer.playersPokemon.pokeHP}");
+            Thread.Sleep(2000);
+            if (Damage.isSuperEffective)
+            {
+                Console.WriteLine(("Super Effective!"));
+            }
+            if (Damage.isCrit)
+            {
+                Console.WriteLine("Critical hit!");
+            }
+            
+            
             
             defendingPlayer.playersPokemon.checkIfFainted();
             
