@@ -101,7 +101,6 @@ public class Game
             defendingPlayer.playersPokemon.drainHP(damageAmount);
             
             Console.WriteLine($"{defendingPlayer.playersPokemon.pokeName} took {damageAmount} damage! Remaining HP: {defendingPlayer.playersPokemon.pokeHP}");
-            Thread.Sleep(2000);
             if (Damage.isSuperEffective)
             {
                 Console.WriteLine(("Super Effective!"));
@@ -111,6 +110,7 @@ public class Game
                 Console.WriteLine("Critical hit!");
             }
             
+            Thread.Sleep(2000);
             
             
             defendingPlayer.playersPokemon.checkIfFainted();
